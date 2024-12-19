@@ -5,3 +5,6 @@
 
 # env files (can opt-in for committing if needed)
 .env*.local
+
+# IDE files
+/.idea/
