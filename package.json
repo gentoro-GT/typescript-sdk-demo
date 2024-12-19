@@ -1,18 +1,39 @@
 {
-  "name": "gentoro-openai-demo",
-  "private": true,
+  "name": "typescript-sdk-demo",
   "version": "0.0.1",
+  "description": "Demo Application using Gentoro SDK for Typescript",
+  "keywords": [
+    "typescript",
+    "sdk",
+    "api",
+    "client"
+  ],
+  "author": "Gentoro R&D",
+  "homepage": "https://github.com/gentoro-GT/typescript-sdk-demo",
+  "bugs": "https://github.com/gentoro-GT/typescript-sdk-demo/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gentoro-GT/typescript-sdk-demo"
+  },
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
+    "start-local": " npm run build:css && vite",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "preview": "vite preview",
-    "tailwind:dev": "npx tailwindcss -i ./src/globals.css -o ./src/assets/globals.css --watch"
+    "tailwind:dev": "npx tailwindcss -i ./src/globals.css -o ./src/assets/globals.css --watch",
+    "build:css": "postcss ./src/globals.css -o ./src/assets/globals.css"
   },
   "dependencies": {
+    "@gentoro/sdk": "0.0.1",
+    "@preline/collapse": "^2.6.0",
+    "autoprefixer": "^10.4.20",
     "openai": "^4.76.3",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
     "preline": "^2.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

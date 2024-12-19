@@ -21,7 +21,7 @@ export const OnlyLogo = ({width, height, className = 'h-auto mx-auto'}: OnlyLogo
 
 export const LogoPlusText = (): JSX.Element => {
     return (
-        <svg className="h-auto mx-auto" width="200" viewBox="0 0 1692.00 354.00" fill="inherit"
+        <svg className="h-auto mx-auto" width="200" viewBox="0 0 1692.00 354.00"
              xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(0.000000,354.000000) scale(0.100000,-0.100000)"
                fill={'inherit'} stroke="none">

@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
-import {Message} from "../ChatContext.ts";
-import {ChatCompletion} from "openai/resources/chat/completions";
+import {ChatCompletion, ChatCompletionMessageParam, ChatCompletionTool} from "openai/resources/chat/completions";
+
 
 export interface StreamChatResponse {
     onChunk: (message: string) => void;
@@ -16,14 +16,12 @@ export class OpenAiService {
         });
     }
 
-    complete = (messages: Message[]):Promise<ChatCompletion>  => {
+    complete = (_messages: ChatCompletionMessageParam[], _tools: ChatCompletionTool[] ):Promise<ChatCompletion> => {
         return new Promise<ChatCompletion>( (resolve, reject) => {
             this._client.chat.completions.create({
-                messages: messages.map((message) => ({
-                    "role": message.role === 'gentoro' ? "assistant" : "user",
-                    "content": message.message,
-                } as OpenAI.Chat.Completions.ChatCompletionMessageParam)),
-                model: import.meta.env.VITE_OPENAI_MODEL
+                messages: _messages,
+                model: import.meta.env.VITE_OPENAI_MODEL,
+                tools: _tools,
             }).then((result) => {
                 resolve(result);
             }).catch((error) => {

@@ -1,11 +1,15 @@
-import {createContext} from "react";
+import {createContext, JSX} from "react";
 
-export type MessageRole = "user" | "gentoro";
+export enum MessageRole {
+    User = "user",
+    Gentoro = "gentoro",
+};
 
 export interface Message {
-    id: number;
-    role: MessageRole;
-    message: string;
+    id: () =>  number;
+    role: () => MessageRole;
+    plainText : () => string;
+    render: () => JSX.Element | string;
 }
 
 export interface EventListener {

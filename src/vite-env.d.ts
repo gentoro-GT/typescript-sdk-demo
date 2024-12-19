@@ -4,6 +4,7 @@ interface ImportMetaEnv {
     readonly VITE_GENTORO_API_KEY: string
     readonly VITE_GENTORO_BRIDGE_UID: string
     readonly VITE_GENTORO_BASE_URI: string
+    readonly VITE_GENTORO_AUTH_MOD_BASE_URI: string
     readonly VITE_OPENAI_MODEL: string
 }
 

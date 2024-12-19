@@ -1,7 +1,7 @@
 import React from "react";
-import {ChatContext, ChatContextType, Message, EventListener} from "../ChatContext.ts";
-import {FormattedMessage, GentoroChatBubble, UserChatBubble} from "./ChatBubble.tsx";
-import {LoadingDots} from "./LoadingDots.tsx";
+import {ChatContext, ChatContextType, EventListener, Message, MessageRole} from "../ChatContext.ts";
+import {GentoroChatBubble, UserChatBubble} from "./base/ChatBubble.tsx";
+import {LoadingDots} from "./base/LoadingDots.tsx";
 
 export interface ChatContainerState {
     messages: Message[];
@@ -30,12 +30,12 @@ export class ChatContainer extends React.Component<ChatContainerProps, ChatConta
                 showLoading: state === "blocked",
             });
         },
-        onNewMessages: (messages: Message[]) => {
-            const _last_message_id:number = this.state.messages.length === 0 ?
-                0 : this.state.messages[this.state.messages.length - 1].id;
-            const _message_copy: Message [] = [...this.state.messages];
-            console.log('received broad casted message', messages, _last_message_id);
-            messages.filter((message) => message.id > _last_message_id).forEach( messages => _message_copy.push(messages));
+        onNewMessages: (_messages: Message[]) => {
+            const { messages } = this.state;
+            const _last_message_id:number = messages.length === 0 ?
+                0 : (messages[messages.length - 1] as Message).id();
+            const _message_copy: Message [] = [...messages];
+            _messages.filter((message) => message.id() > _last_message_id).forEach( messages => _message_copy.push(messages));
             this.setState({
                 messages: _message_copy,
             });
@@ -47,12 +47,12 @@ export class ChatContainer extends React.Component<ChatContainerProps, ChatConta
             <ul className="mt-16 space-y-5">
                 {
                     this.state.messages.map((message: Message, index) => (
-                        message.role === "gentoro" ?
+                        message.role() === MessageRole.Gentoro ?
                             <GentoroChatBubble key={index}>
-                                <FormattedMessage>{message.message}</FormattedMessage>
+                                {message.render()}
                             </GentoroChatBubble> :
                             <UserChatBubble key={index}>
-                                <FormattedMessage>{message.message}</FormattedMessage>
+                                {message.render()}
                             </UserChatBubble>
                     ))
                 }
