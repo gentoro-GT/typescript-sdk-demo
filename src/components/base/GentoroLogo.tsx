@@ -8,7 +8,7 @@ type OnlyLogoProps = {
 
 export const OnlyLogo = ({width, height, className = 'h-auto mx-auto'}: OnlyLogoProps) : JSX.Element => {
     return (
-        <svg className={className} height={height || width} width={width} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 669 670">
+        <svg style={{fill: 'currentcolor'}} className={className} height={height || width} width={width} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 669 670">
              <path
                  d="m0,322.03c4.16,-89.17 40.91,-167.85 97.73,-225.18c78.78,-79.48 184.32,-96.85 237.72,-96.85c65.63,0 125.4,21.66 158.45,39.34c24.37,13.04 48.62,32.58 71.42,53.77c40.43,37.58 63.32,82.68 69.35,93.43c15.71,27.99 34.62,91.41 34.62,135.5c0,7.11 -103.01,-77.53 -124,-93.06c-40,-29.59 -40.13,-29.18 -64.56,-47.25c-37.42,-27.68 -75.81,-57.08 -82.21,-62.11c-21.1,-16.59 -39.06,-31.2 -63.05,-31.2c-24.39,0 -48.53,21.39 -48.89,20.22" />
              <path
